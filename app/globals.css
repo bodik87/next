@@ -16,7 +16,7 @@ input[type="search"]::-webkit-search-results-decoration {
 }
 
 ::-webkit-scrollbar {
-  @apply w-2;
+  @apply hidden sm:block w-2;
 }
 ::-webkit-scrollbar-track {
   @apply bg-transparent rounded;
