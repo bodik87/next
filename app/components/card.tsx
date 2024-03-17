@@ -1,11 +1,16 @@
 "use client"
 
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import ContentEditable from "react-contenteditable";
+import { cn } from "../lib/utils";
 
-type Props = {}
+type Props = {
+ // title: string,
+ // body: string
+ color: "red" | "green" | "blue" | "yellow"
+}
 
-export default function Card({ }: Props) {
+export default function Card({ color }: Props) {
  const [title, setTitle] = useState<string>("");
  const [body, setBody] = useState<string>("");
 
@@ -16,11 +21,17 @@ export default function Card({ }: Props) {
   setBody(event.currentTarget.innerHTML);
  };
  return (
-  <article className="p-4 pb-5 w-full bg-green-100 rounded-md text-black">
+  <article className={cn(
+   "p-4 pb-5 w-full rounded-md text-black",
+   color === "red" && "bg-[#F96246]",
+   color === "green" && "bg-[#1ECB8B]",
+   color === "blue" && "bg-[#0078D4]",
+   color === "yellow" && "bg-[#FEF9C3]"
+  )}>
    <ContentEditable
     html={title}
     onChange={handleTitleChange}
-    className="outline-none font-semibold whitespace-nowrap"
+    className="text-lg outline-none font-semibold whitespace-nowrap"
     data-placeholder="Title"
    />
    <ContentEditable

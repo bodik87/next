@@ -17,7 +17,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 [contentEditable="true"]:empty:before {
   content: attr(data-placeholder);
-  color: gray;
+  @apply text-black/60;
 }
 
 /* ::-webkit-scrollbar {
