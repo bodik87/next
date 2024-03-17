@@ -10,9 +10,10 @@ type Props = {
  title: string,
  body: string
  color: Color
+ createdAt: Date
 }
 
-export default function CardPreview({ id, title, body, color }: Props) {
+export default function CardPreview({ id, title, body, color, createdAt }: Props) {
  const [openedCard, setOpenedCard] = useState(false)
  return (
   <>
@@ -30,7 +31,7 @@ export default function CardPreview({ id, title, body, color }: Props) {
    )}>
     <p className="text-lg outline-none font-semibold whitespace-nowrap">{title}</p>
     <p className="mt-4 outline-none">{body}</p>
-    <small className="mt-4 outline-none">{20}</small>
+    <small className="mt-4 outline-none">{new Date(createdAt).toJSON().slice(0, 10).replace(/-/g, '.')}</small>
    </article>
   </>
  )

@@ -7,8 +7,8 @@ export default async function Home() {
   return (
     <section>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-        {items.map(item => (
-          <CardPreview id={item.id} key={item.id} title={item.title} body={item.body} color={item.color} />
+        {items.sort((a, b) => (a.id as any > b.id as any) - (a.id as any < b.id as any)).map(item => (
+          <CardPreview id={item.id} key={item.id} title={item.title} body={item.body} color={item.color} createdAt={item.createdAt} />
         ))}
         <CreateButton />
       </div>
