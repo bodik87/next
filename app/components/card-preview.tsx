@@ -30,6 +30,7 @@ export default function CardPreview({ id, title, body, color }: Props) {
    )}>
     <p className="text-lg outline-none font-semibold whitespace-nowrap">{title}</p>
     <p className="mt-4 outline-none">{body}</p>
+    <small className="mt-4 outline-none">{20}</small>
    </article>
   </>
  )
