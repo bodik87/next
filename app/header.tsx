@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import Head from './components/head'
 
 export default function Header() {
   return (
-    <header>
+    <Head>
       <nav className='w-full max-w-7xl mx-auto'>
         <ul className='flex gap-10'>
           <li>
@@ -16,6 +17,6 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-    </header>
+    </Head>
   )
 }

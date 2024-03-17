@@ -32,11 +32,11 @@ body {
 }
 
 header {
-  @apply fixed top-0 inset-x-0 h-20 flex items-center bg-dark-accent px-5;
+  @apply fixed top-0 inset-x-0 h-20 flex items-center bg-dark-accent px-5 transition-all duration-300;
 }
 
 main {
-  @apply h-[calc(100dvh_-_120px)] mt-20 overflow-y-auto px-5;
+  @apply h-[calc(100dvh_-_120px)] mt-20 px-5;
 }
 
 section {
