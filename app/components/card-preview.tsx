@@ -6,21 +6,18 @@ import { useState } from "react"
 import Card from "./card"
 
 type Props = {
+ id: number,
  title: string,
  body: string
  color: Color
 }
 
-export default function CardPreview({ title, body, color }: Props) {
+export default function CardPreview({ id, title, body, color }: Props) {
  const [openedCard, setOpenedCard] = useState(false)
  return (
   <>
    {openedCard && (
-    <div onClick={() => {
-     setOpenedCard(false)
-    }} className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
-     <Card oldColor={color} oldTitle={title} oldBody={body} />
-    </div>
+    <Card id={id} oldColor={color} oldTitle={title} oldBody={body} setOpenedCard={setOpenedCard} />
    )}
 
    <article onClick={() => setOpenedCard(true)

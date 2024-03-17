@@ -33,17 +33,22 @@ export async function createItem(title: string, body: string, color: Color) {
 //   }
 // }
 
-// export async function updateItem(id: string, title: string) {
-//   try {
-//     const item = await prisma.item.update({
-//       where: { id },
-//       data: { title },
-//     });
-//     return { item };
-//   } catch (error) {
-//     return { error };
-//   }
-// }
+export async function updateItem(
+  id: number,
+  title: string,
+  body: string,
+  color: Color
+) {
+  try {
+    const item = await prisma.item.update({
+      where: { id },
+      data: { title, body, color },
+    });
+    return { item };
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 // export async function deleteItem(id: string) {
 //   try {
