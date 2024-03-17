@@ -15,6 +15,11 @@ input[type="search"]::-webkit-search-results-decoration {
   -webkit-appearance: none;
 }
 
+[contentEditable="true"]:empty:before {
+  content: attr(data-placeholder);
+  color: gray;
+}
+
 /* ::-webkit-scrollbar {
   @apply hidden sm:block w-2;
 }
