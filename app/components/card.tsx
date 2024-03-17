@@ -9,10 +9,10 @@ export default function Card({ }: Props) {
  const [title, setTitle] = useState<string>("");
  const [body, setBody] = useState<string>("");
 
- const handleTitleChange = (event: ChangeEvent<HTMLDivElement>) => {
+ const handleTitleChange = (event: any) => {
   setTitle(event.currentTarget.innerHTML);
  };
- const handleBodyChange = (event: ChangeEvent<HTMLDivElement>) => {
+ const handleBodyChange = (event: any) => {
   setBody(event.currentTarget.innerHTML);
  };
  return (

@@ -30,7 +30,7 @@ export default function ButtonUp() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
-            className="w-9 h-9 fixed bottom-6 right-4 z-40 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-sm"
+            className="w-12 h-12 fixed bottom-6 right-4 z-40 flex items-center justify-center bg-white/20 rounded-full backdrop-blur-xl"
             onClick={scrollToTop}
           >
             <Arrow />
