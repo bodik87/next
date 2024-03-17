@@ -1,6 +1,6 @@
 "use client";
 
-import useShow from "../lib/useShow";
+import useShow from "../../lib/useShow";
 
 export default function Head({
  children,

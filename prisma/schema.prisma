@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+enum Color {
+  RED
+  GREEN
+  BLUE
+  YELLOW
+}
+
+model Item {
+  id    Int    @id @default(autoincrement())
+  title String
+  body  String
+  color Color
+}

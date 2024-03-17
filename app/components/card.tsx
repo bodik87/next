@@ -1,18 +1,21 @@
 "use client"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContentEditable from "react-contenteditable";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
+
+export type Color = "RED" | "GREEN" | "BLUE" | "YELLOW";
 
 type Props = {
- // title: string,
- // body: string
- color: "red" | "green" | "blue" | "yellow"
+ oldTitle: string,
+ oldBody: string
+ oldColor: Color
 }
 
-export default function Card({ color }: Props) {
+export default function Card({ oldTitle, oldBody, oldColor }: Props) {
  const [title, setTitle] = useState<string>("");
  const [body, setBody] = useState<string>("");
+ const [color, setColor] = useState<string>("");
 
  const handleTitleChange = (event: any) => {
   setTitle(event.currentTarget.innerHTML);
@@ -20,13 +23,21 @@ export default function Card({ color }: Props) {
  const handleBodyChange = (event: any) => {
   setBody(event.currentTarget.innerHTML);
  };
+
+ useEffect(() => {
+  setTitle(oldTitle)
+  setBody(oldBody)
+  setColor(oldColor)
+ }, [oldBody, oldColor, oldTitle])
+
+
  return (
-  <article className={cn(
-   "p-4 pb-5 w-full rounded-md text-black",
-   color === "red" && "bg-[#F96246]",
-   color === "green" && "bg-[#1ECB8B]",
-   color === "blue" && "bg-[#0078D4]",
-   color === "yellow" && "bg-[#FEF9C3]"
+  <article onClick={(e) => e.stopPropagation()} className={cn(
+   "p-4 pb-5 max-w-md w-full rounded-md text-black",
+   color === "RED" && "bg-[#F96246]",
+   color === "GREEN" && "bg-[#1ECB8B]",
+   color === "BLUE" && "bg-[#0078D4]",
+   color === "YELLOW" && "bg-[#FEF9C3]"
   )}>
    <ContentEditable
     html={title}
