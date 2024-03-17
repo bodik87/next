@@ -39,7 +39,7 @@ export default function Card({ id, oldTitle, oldBody, oldColor, setOpenedCard }:
     updateItemAction(id, title, body, color)
     setOpenedCard(false)
    }}
-   className="absolute inset-0 flex items-center justify-center bg-black/80 z-10">
+   className="absolute inset-0 p-5 flex items-center justify-center bg-black/80 z-10">
    <article
     onClick={(e) => e.stopPropagation()}
     className={cn(
