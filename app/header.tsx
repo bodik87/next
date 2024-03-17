@@ -3,8 +3,8 @@ import Link from 'next/link'
 export default function Header() {
   return (
     <header>
-      <nav className='py-8'>
-        <ul className='container flex gap-10'>
+      <nav className='w-full max-w-7xl mx-auto'>
+        <ul className='flex gap-10'>
           <li>
             <Link href='/'>Home</Link>
           </li>
