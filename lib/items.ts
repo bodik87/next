@@ -50,12 +50,12 @@ export async function updateItem(
   }
 }
 
-// export async function deleteItem(id: string) {
-//   try {
-//     await prisma.item.delete({
-//       where: { id },
-//     });
-//   } catch (error) {
-//     return { error };
-//   }
-// }
+export async function deleteItem(id: number) {
+  try {
+    await prisma.item.delete({
+      where: { id },
+    });
+  } catch (error) {
+    return { error };
+  }
+}

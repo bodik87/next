@@ -5,6 +5,7 @@ import { Color } from "@prisma/client"
 import { useState } from "react"
 import Card from "./card"
 import ContentEditable from "react-contenteditable"
+import DeleteButton from "./delete-button"
 
 type Props = {
  id: number,
@@ -24,7 +25,7 @@ export default function CardPreview({ id, title, body, color, createdAt }: Props
 
    <article onClick={() => setOpenedCard(true)
    } className={cn(
-    "p-4 pb-5 w-full rounded-md text-black",
+    "p-4 pb-5 w-full rounded-md text-black flex flex-col",
     color === "RED" && "bg-[#F96246]",
     color === "GREEN" && "bg-[#1ECB8B]",
     color === "BLUE" && "bg-[#0078D4]",
@@ -38,6 +39,8 @@ export default function CardPreview({ id, title, body, color, createdAt }: Props
      data-placeholder="New note..."
     />
     <small className="mt-4 outline-none">{new Date(createdAt).toJSON().slice(0, 10).replace(/-/g, '.')}</small>
+
+    <DeleteButton id={id} />
    </article>
   </>
  )

@@ -1,6 +1,6 @@
 "use server";
 
-import { createItem, updateItem } from "@/lib/items";
+import { createItem, deleteItem, updateItem } from "@/lib/items";
 import { Color } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
@@ -33,12 +33,12 @@ export async function updateItemAction(
   }
 }
 
-// export async function deleteItemAction(id: string) {
-//   try {
-//     await deleteItem(id);
-//   } catch (error: any) {
-//     return { error: error?.message || "Failed to update todo." };
-//   } finally {
-//     revalidatePath("/");
-//   }
-// }
+export async function deleteItemAction(id: number) {
+  try {
+    await deleteItem(id);
+  } catch (error: any) {
+    return { error: error?.message || "Failed to update todo." };
+  } finally {
+    revalidatePath("/");
+  }
+}
