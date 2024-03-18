@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { Color } from "@prisma/client"
 import { useState } from "react"
 import Card from "./card"
+import ContentEditable from "react-contenteditable"
 
 type Props = {
  id: number,
@@ -17,9 +18,9 @@ export default function CardPreview({ id, title, body, color, createdAt }: Props
  const [openedCard, setOpenedCard] = useState(false)
  return (
   <>
-   {openedCard && (
+   {/* {openedCard && (
     <Card id={id} oldColor={color} oldTitle={title} oldBody={body} setOpenedCard={setOpenedCard} />
-   )}
+   )} */}
 
    <article onClick={() => setOpenedCard(true)
    } className={cn(
@@ -30,9 +31,15 @@ export default function CardPreview({ id, title, body, color, createdAt }: Props
     color === "YELLOW" && "bg-[#FEF9C3]"
    )}>
     <p className="text-lg outline-none font-semibold whitespace-nowrap">{title}</p>
-    <p className="mt-4 outline-none">{body}</p>
+    <ContentEditable
+     html={body}
+     onChange={() => { }}
+     className="mt-4 outline-none"
+     data-placeholder="New note..."
+    />
     <small className="mt-4 outline-none">{new Date(createdAt).toJSON().slice(0, 10).replace(/-/g, '.')}</small>
    </article>
   </>
  )
 }
+
