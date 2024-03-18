@@ -1,6 +1,6 @@
 "use client"
 
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ContentEditable from "react-contenteditable";
 import { cn } from "../../lib/utils";
 import { updateItemAction } from "../actions";
@@ -12,10 +12,9 @@ type Props = {
  oldTitle: string,
  oldBody: string,
  oldColor: Color,
- setOpenedCard: Dispatch<SetStateAction<boolean>>
 }
 
-export default function Card({ id, oldTitle, oldBody, oldColor, setOpenedCard }: Props) {
+export default function Card({ id, oldTitle, oldBody, oldColor }: Props) {
  const [title, setTitle] = useState<string>("");
  const [body, setBody] = useState<string>("");
  const [color, setColor] = useState<Color>("YELLOW");
@@ -37,7 +36,6 @@ export default function Card({ id, oldTitle, oldBody, oldColor, setOpenedCard }:
   <div
    onClick={async () => {
     updateItemAction(id, title, body, color)
-    setOpenedCard(false)
    }}
    className="absolute inset-0 p-5 flex items-center justify-center bg-black/80 z-10">
    <article
