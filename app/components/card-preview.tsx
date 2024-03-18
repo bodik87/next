@@ -2,46 +2,38 @@
 
 import { cn } from "@/lib/utils"
 import { Color } from "@prisma/client"
-import { useState } from "react"
-import Card from "./card"
 import ContentEditable from "react-contenteditable"
-import DeleteButton from "./delete-button"
+import { motion } from "framer-motion";
 
 type Props = {
  id: number,
  title: string,
  body: string
  color: Color
- createdAt: Date
+ onClick: () => void
 }
 
-export default function CardPreview({ id, title, body, color, createdAt }: Props) {
- const [openedCard, setOpenedCard] = useState(false)
+export default function CardPreview({ id, title, body, color, onClick }: Props) {
  return (
   <>
-   {/* {openedCard && (
-    <Card id={id} oldColor={color} oldTitle={title} oldBody={body} setOpenedCard={setOpenedCard} />
-   )} */}
-
-   <article onClick={() => setOpenedCard(true)
-   } className={cn(
-    "p-4 pb-5 w-full rounded-md text-black flex flex-col",
-    color === "RED" && "bg-[#F96246]",
-    color === "GREEN" && "bg-[#1ECB8B]",
-    color === "BLUE" && "bg-[#0078D4]",
-    color === "YELLOW" && "bg-[#FEF9C3]"
-   )}>
+   <motion.article
+    onClick={onClick}
+    layoutId={String(id)}
+    className={cn(
+     "p-4 pb-5 w-full rounded-md text-black flex flex-col",
+     color === "RED" && "bg-[#F96246]",
+     color === "GREEN" && "bg-[#1ECB8B]",
+     color === "BLUE" && "bg-[#0078D4]",
+     color === "YELLOW" && "bg-[#FEF9C3]"
+    )}>
     <p className="text-lg outline-none font-semibold whitespace-nowrap">{title}</p>
     <ContentEditable
      html={body}
      onChange={() => { }}
-     className="mt-4 outline-none"
+     className="mt-2 outline-none"
      data-placeholder="New note..."
     />
-    <small className="mt-4 outline-none">{new Date(createdAt).toJSON().slice(0, 10).replace(/-/g, '.')}</small>
-
-    <DeleteButton id={id} />
-   </article>
+   </motion.article>
   </>
  )
 }
